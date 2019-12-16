@@ -4,14 +4,16 @@ of SGX enclaves.
 
 ## Description
 
-Recent Intel processor exhibit a software interface for controlling the operation voltage.
-This interface is not required for normal operation but is used by expert users for performance optimizations. 
+All recent Intel processors exhibit an interface which enables software to adjust core voltages without rebooting the system.
+This feature is not required for normal operation but is used by expert users for performance optimizations. For instance, it is utilized by Intel's XTU application developed for the overclocking community. 
 
 In V0LTpwn, we show that that malicious software can use this interface to reduce the processor voltage to a critical threshold
 at which certain instructions no longer operate correctly. This means that an attacker is able induce bit flips 
 in computations which make use of the these instructions. We demonstrate in our paper how an attacker can manipulate cryptographic computations and even deviate the control flow of programs.
 
-As the attack is controlled by software, the attacker does not require physical access to the machine. However, the attacker needs operating system privileges to utilize the voltage interfaces. It means that the vulnerability is not a direct threat for normal users. The main target are trusted execution environments like Intel SGX. SGX is a security feature allowing applications to make use of enlaves which are protected even from the operating system. For instance, SGX can be used to run an application (securly) in an untrusted cloud environment. Previous attacks like Foreshadow have shown that secrets can be stolen from SGX enclaves over side channels. V0LTpwn is the first attack which is able to manipulate computations in SGX enclaves.    
+As the attack is controlled by software, the attacker does not require physical access to the machine. However, the attacker needs operating system privileges to utilize the voltage interfaces. It means that the vulnerability is not a direct threat for normal users. The main target are trusted execution environments like Intel's SGX. 
+
+SGX is a security feature enabling applications to deploy enclaves which are protected even from the operating system. For instance, SGX can be used to run an application (securely) in an untrusted cloud environment. Previous attacks like Foreshadow have shown that secrets can be stolen from SGX enclaves over side channels. V0LTpwn is the first attack which is able to manipulate computations in SGX enclaves.    
 
 We informed Intel in a responsible disclosure process about the vulnerability. Intel cooperated with us and started delivering patches to the affected platforms. For further details, we refer to official information in Intel's Security Advisory.  
 
